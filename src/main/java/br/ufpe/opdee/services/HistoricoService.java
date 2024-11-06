@@ -1,7 +1,6 @@
 package br.ufpe.opdee.services;
 
-import br.ufpe.opdee.models.Historico;
-import br.ufpe.opdee.models.Perfil;
+import br.ufpe.opdee.models.historico.Historico;
 import br.ufpe.opdee.repositories.HistoricoRepository;
 import org.springframework.stereotype.Service;
 
@@ -32,4 +31,5 @@ public class HistoricoService {
     public void delete(UUID id) {
         historicoRepository.deleteById(id);
     }
+
 }

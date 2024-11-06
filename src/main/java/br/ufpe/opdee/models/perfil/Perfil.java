@@ -1,15 +1,16 @@
-package br.ufpe.opdee.models;
+package br.ufpe.opdee.models.perfil;
 
+import br.ufpe.opdee.models.historico.Historico;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.sql.Timestamp;
-import java.time.Instant;
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
-
 @Entity // Define model como tabela
 @AllArgsConstructor //Construtor com argumentos
 @NoArgsConstructor //Construtor vazio
@@ -20,12 +21,18 @@ public class Perfil {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+    @Column(name = "nome", nullable = false)
     private String nome;
-    @Column(name = "created_at")
-    private Timestamp createdAt;
+    @Column(name = "created_at", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime createdAt;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "perfil")
+    @JsonIgnore
+    private List<Historico> historicos;
 
     @PrePersist
     protected void onCreate() {
-        this.createdAt = Timestamp.from(Instant.now());
+        createdAt = LocalDateTime.now();
     }
+
 }

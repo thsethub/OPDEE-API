@@ -6,9 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.sql.Timestamp;
-import java.time.Instant;
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Entity // Define model como tabela
 @AllArgsConstructor //Construtor com argumentos
@@ -18,18 +16,15 @@ import java.time.Instant;
 public class Usuario {
     @Id
     private String uuid;
-    @Column(name = "nome_completo")
+    @Column(name = "nome_completo", nullable = false)
     private String nomeCompleto;
-    @Column(name = "email_ufpe")
+    @Column(name = "email_ufpe", nullable = false, unique = true)
     private String emailUfpe;
-    @Column(name = "created_at")
-    private Timestamp createdAt;
-    @Column(name = "superuser")
+    @Column(name = "created_at", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime createdAt;
+    @Column(name = "superuser", nullable = false)
     private boolean superUser;
 
-    @PrePersist
-    protected void onCreate() {
-        this.createdAt = Timestamp.from(Instant.now());
-    }
 
 }

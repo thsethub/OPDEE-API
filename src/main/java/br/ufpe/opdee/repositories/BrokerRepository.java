@@ -1,6 +1,6 @@
 package br.ufpe.opdee.repositories;
 
-import br.ufpe.opdee.models.Broker;
+import br.ufpe.opdee.models.broker.Broker;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;

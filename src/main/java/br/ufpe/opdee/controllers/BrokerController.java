@@ -1,7 +1,9 @@
 package br.ufpe.opdee.controllers;
 
-import br.ufpe.opdee.models.Broker;
+import br.ufpe.opdee.models.broker.Broker;
+import br.ufpe.opdee.models.broker.BrokerRequest;
 import br.ufpe.opdee.services.BrokerService;
+import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,6 +41,10 @@ public class BrokerController {
         return ResponseEntity.ok(brokerService.findAll());
     }
 
-
+    @PutMapping("/{id}")
+    public ResponseEntity updateBroker(@PathVariable UUID id, @RequestBody BrokerRequest broker) {
+        Broker updatedBroker = brokerService.updateBroker(id, broker);
+        return ResponseEntity.ok(updatedBroker);
+    }
 
 }
