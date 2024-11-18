@@ -5,9 +5,7 @@ import br.ufpe.opdee.models.ambiente.Ambiente;
 import br.ufpe.opdee.models.Usuario;
 import br.ufpe.opdee.models.acesso.Acesso;
 import br.ufpe.opdee.repositories.AcessoRepository;
-import br.ufpe.opdee.repositories.AmbienteRepository;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,20 +15,18 @@ import java.util.UUID;
 @Service
 public class AcessoService {
 
-    @Autowired
     private final AcessoRepository acessoRepository;
 
-    @Autowired
-    private final AmbienteRepository ambienteRepository;
+//    private final AmbienteRepository ambienteRepository;
     private final ModelMapper modelMapper;
 
     public List<Acesso> findAll() {
         return acessoRepository.findAll();
     }
 
-    public AcessoService(AcessoRepository acessoRepository, AmbienteRepository ambienteRepository, ModelMapper modelMapper) {
+    public AcessoService(AcessoRepository acessoRepository, ModelMapper modelMapper) {
         this.acessoRepository = acessoRepository;
-        this.ambienteRepository = ambienteRepository;
+//        this.ambienteRepository = ambienteRepository;
         this.modelMapper = modelMapper;
     }
 
@@ -43,7 +39,7 @@ public class AcessoService {
     }
 
     public Acesso permissaoAcesso(UUID id){
-         var aux = acessoRepository.findById(id);
+            var aux = acessoRepository.findById(id);
 
         if (aux.isPresent()) {
             aux.get().setAtivo(!aux.get().isAtivo());

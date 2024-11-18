@@ -30,7 +30,6 @@ public class Acesso {
     @Column(name = "ativado", nullable = false)
     private boolean ativo;
     @Column(name = "created_at", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime createdAt;
     @Column(name = "tipo_usuario", nullable = false)
     private String tipoUsuario;

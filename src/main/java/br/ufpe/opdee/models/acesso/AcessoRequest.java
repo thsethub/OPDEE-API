@@ -14,6 +14,6 @@ public record AcessoRequest(
 ) {
 
     public Acesso criarAcesso(Usuario usuario, Ambiente ambiente){
-        return  new Acesso(null, usuario, ambiente, this.ativo, LocalDateTime.now(), tipoUsuario);
+        return new Acesso(null, usuario, ambiente, this.ativo, LocalDateTime.now(), tipoUsuario);
     }
 }
