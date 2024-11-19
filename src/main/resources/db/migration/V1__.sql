@@ -21,7 +21,7 @@ CREATE TABLE ambientes
 
 CREATE TABLE broker_config
 (
-    id         VARCHAR(255)                NOT NULL,
+    id         UUID                        NOT NULL,
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL,
     ip_address VARCHAR(255)                NOT NULL,
     port       VARCHAR(255)                NOT NULL,
