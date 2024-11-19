@@ -26,5 +26,11 @@ public class Usuario {
     @Column(name = "superuser", nullable = false)
     private boolean superUser;
 
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+    }
+
+
 
 }
