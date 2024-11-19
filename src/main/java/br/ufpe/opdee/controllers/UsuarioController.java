@@ -1,6 +1,5 @@
 package br.ufpe.opdee.controllers;
 
-import br.ufpe.opdee.config.WebSocketSessionManager;
 import br.ufpe.opdee.models.Usuario;
 import br.ufpe.opdee.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +14,10 @@ import java.io.IOException;
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
-    private final WebSocketSessionManager sessionManager;
 
     @Autowired
-    public UsuarioController(UsuarioService usuarioService, WebSocketSessionManager sessionManager) {
+    public UsuarioController(UsuarioService usuarioService) {
         this.usuarioService = usuarioService;
-        this.sessionManager = sessionManager;
     }
 
     @PostMapping
