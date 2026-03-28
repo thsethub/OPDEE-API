@@ -12,11 +12,12 @@ import java.util.UUID;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter@Setter
-@Table(name = "brokerConfig")
+@Getter
+@Setter
+@Table(name = "broker_config")
 public class Broker {
     @Id
-    @GeneratedValue (strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     @Column(name = "created_at", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)

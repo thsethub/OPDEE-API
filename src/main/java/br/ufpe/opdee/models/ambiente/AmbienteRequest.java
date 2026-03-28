@@ -6,6 +6,6 @@ public record AmbienteRequest(
         String mensagem
 ) {
     public Ambiente toAmbiente(){
-        return new Ambiente(null, this.nome(), null, this.topic(), this.mensagem(), null, null);
+        return new Ambiente(null, this.nome(), null, this.topic(), this.mensagem(), null, null, null);
     }
 }

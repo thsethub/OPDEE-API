@@ -6,6 +6,7 @@ import br.ufpe.opdee.models.Usuario;
 
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.UUID;
 
 public record HistoricoRequest (
@@ -15,6 +16,6 @@ public record HistoricoRequest (
         String mensagem
 ){
     public Historico criarRegistro(Usuario usuario, Perfil perfil, Ambiente ambiente){
-        return new Historico(null, usuario, LocalDateTime.now(), perfil, ambiente, this.mensagem);
+        return new Historico(null, usuario, LocalDateTime.now(ZoneId.of("America/Recife")), perfil, ambiente, this.mensagem);
     }
 }

@@ -7,12 +7,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 @Entity // Define model como tabela
-@AllArgsConstructor //Construtor com argumentos
-@NoArgsConstructor //Construtor vazio
-@Getter @Setter //Getters e Setters
-@Table(name = "usuarios")//Nome da tabela
+@AllArgsConstructor // Construtor com argumentos
+@NoArgsConstructor // Construtor vazio
+@Getter
+@Setter // Getters e Setters
+@Table(name = "usuarios") // Nome da tabela
 public class Usuario {
     @Id
     private String uuid;
@@ -23,8 +25,15 @@ public class Usuario {
     @Column(name = "created_at", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime createdAt;
+
+    @PrePersist
+    protected void onCreate() {
+        if (createdAt == null) {
+            createdAt = LocalDateTime.now(ZoneId.of("America/Recife"));
+        }
+    }
+
     @Column(name = "superuser", nullable = false)
     private boolean superUser;
-
 
 }

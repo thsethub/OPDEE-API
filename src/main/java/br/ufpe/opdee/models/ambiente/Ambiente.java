@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.UUID;
 
@@ -31,6 +32,8 @@ public class Ambiente {
     private String topic;
     @Column(name = "mensagem", nullable = false)
     private String mensagem;
+    @Column(name = "tranca_sala_id", nullable = true)
+    private Long trancaSalaId;
     @OneToMany(mappedBy = "ambiente", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Acesso> acessos;
@@ -40,6 +43,6 @@ public class Ambiente {
 
     @PrePersist
     protected void onCreate() {
-        createdAt = LocalDateTime.now();
+        createdAt = LocalDateTime.now(ZoneId.of("America/Recife"));
     }
 }

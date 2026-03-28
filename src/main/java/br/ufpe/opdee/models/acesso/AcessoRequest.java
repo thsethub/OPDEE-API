@@ -4,6 +4,7 @@ import br.ufpe.opdee.models.ambiente.Ambiente;
 import br.ufpe.opdee.models.Usuario;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.UUID;
 
 public record AcessoRequest(
@@ -14,6 +15,6 @@ public record AcessoRequest(
 ) {
 
     public Acesso criarAcesso(Usuario usuario, Ambiente ambiente){
-        return  new Acesso(null, usuario, ambiente, this.ativo, LocalDateTime.now(), tipoUsuario);
+        return  new Acesso(null, usuario, ambiente, this.ativo, LocalDateTime.now(ZoneId.of("America/Recife")), tipoUsuario);
     }
 }
